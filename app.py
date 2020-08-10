@@ -9,7 +9,7 @@ app = Flask(__name__)
 def hello_world():
     return f'''
     <h2> This is The Main page!</h2>
-    Some link beneath
+    Some link here
     <a href = {url_for('hello_first')} > first </a>
     <a href = {url_for('hello_second')} > second </a>
     '''
