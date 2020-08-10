@@ -1,17 +1,33 @@
-from flask import Flask
+from flask import Flask, url_for
+from markupsafe import escape
+
+
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return f'''
+    <h2> This is The Main page!</h2>
+    Some link beneath
+    <a href = {url_for('hello_first')} > first </a>
+    <a href = {url_for('hello_second')} > second </a>
+    '''
 
 
 @app.route('/first')
 def hello_first():
-    return 'Hello, First!'
+    return f'''
+    <h2> This is First page!</h2>
+    <a href = {url_for('hello_world')} > main </a>
+    <a href = {url_for('hello_second')} > second </a>
+    '''
 
 
 @app.route('/second')
 def hello_second():
-    return 'Hello, Next!'
+    return f'''
+    <h2> This is Second page!</h2>
+    <a href = {url_for('hello_world')} > main </a>
+    <a href = {url_for('hello_first')} > first </a>
+    '''
